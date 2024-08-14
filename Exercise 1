@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+</head>
+
+<body>
+    <!-- 
+    Options under Employee Status:
+    Regular
+    Probationary
+    Casual
+
+    Salary Rate:
+    Regular - 500
+    Probationary - 400
+    Casual - 300
+    //
+    Options under Civil Status:
+    Single
+    Married
+    Widow
+
+    Tax Rate:
+    Single - 12%
+    Probationary - 10%
+    Widow - 7% 
+    //
+    Sample Case #1:
+    No. of Days Worked: 15
+    Employee Status:    Regular
+    Civil Status:       Single
+    Result:
+
+    Gross Salary:       7,500.00
+    Tax:                12%
+    Deduction:          900.00
+    Net Salary:         6,600.00
+
+    Sample Case #2:
+    No. of Days Worked: 15
+    Employee Status:    Probationary
+    Civil Status:       Married
+    Result:
+
+    Gross Salary:       4,800.00
+    Tax:                10%
+    Deduction:          480.00
+    Net Salary:         4,320.00
+    -->
+
+    <h1>Exercise 1</h1>
+    <form action="">
+        No. of Days Worked <input type="text" name="days"><br /><br />
+        Employee Status:
+        <select name="status">
+            <option>Regular</option>
+            <option>Probationary</option>
+            <option>Casual</option>
+        </select><br /><br />
+        Civil Status:
+        <select name="civil">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Widow</option>
+        </select><br /><br />
+        <button>Compute Salary</button>
+    </form><br /><br />
+    <?php
+    
+    //Formula
+    $days = $_GET["days"];
+    $civil = $_GET["civil"];
+    $status = $_GET["status"];
+
+    switch($status)
+    {
+        case "Regular":
+            $gross = $days * 500;
+            break;
+        case "Probationary":
+            $gross = $days * 400;
+            break;
+        case "Casual":
+            $gross = $days * 300;
+            break;
+        default:
+            echo "Invalid";
+            break;
+
+        switch($civil)
+        {
+            case "Single":
+                $relation = $status - .12;
+                break;
+            case "Married":
+                $relation = $status - .10;
+                break;
+            case "Widow":
+                $relation = $status- .7;
+                break;
+        }
+    }
+
+    
+    echo "Gross Salary: " . $gross ." <br />";
+    echo "Tax: " . $relation . "<br />";
+    echo "Deduction: 0.00<br />";
+    echo "Net Salary: 0.00<br />";
+    ?>
+
+
+</body>
+
+</html>
