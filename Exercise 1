@@ -26,7 +26,7 @@
 
     Tax Rate:
     Single - 12%
-    Probationary - 10%
+    Married - 10%
     Widow - 7% 
     //
     Sample Case #1:
@@ -53,8 +53,8 @@
     -->
 
     <h1>Exercise 1</h1>
-    <form action="">
-        No. of Days Worked <input type="text" name="days"><br /><br />
+    <form action="" method="GET">
+        No. of Days Worked: <input type="text" name="days"><br /><br />
         Employee Status:
         <select name="status">
             <option>Regular</option>
@@ -67,52 +67,60 @@
             <option>Married</option>
             <option>Widow</option>
         </select><br /><br />
-        <button>Compute Salary</button>
+        <button type="submit">Compute Salary</button>
     </form><br /><br />
+
     <?php
-    
-    //Formula
-    $days = $_GET["days"];
-    $civil = $_GET["civil"];
-    $status = $_GET["status"];
+    if (isset($_GET["days"]) && isset($_GET["status"]) && isset($_GET["civil"])) {
+        $days = $_GET["days"];
+        $status = $_GET["status"];
+        $civil = $_GET["civil"];
 
-    switch($status)
-    {
-        case "Regular":
-            $gross = $days * 500;
-            break;
-        case "Probationary":
-            $gross = $days * 400;
-            break;
-        case "Casual":
-            $gross = $days * 300;
-            break;
-        default:
-            echo "Invalid";
-            break;
-
-        switch($civil)
-        {
-            case "Single":
-                $relation = $status - .12;
+        // Determine gross salary based on employee status
+        switch($status) {
+            case "Regular":
+                $gross = $days * 500;
                 break;
-            case "Married":
-                $relation = $status - .10;
+            case "Probationary":
+                $gross = $days * 400;
                 break;
-            case "Widow":
-                $relation = $status- .7;
+            case "Casual":
+                $gross = $days * 300;
+                break;
+            default:
+                echo "Invalid Employee Status";
+                $gross = 0;
                 break;
         }
+
+        // Determine tax rate based on civil status
+        switch($civil) {
+            case "Single":
+                $taxRate = 0.12;
+                break;
+            case "Married":
+                $taxRate = 0.10;
+                break;
+            case "Widow":
+                $taxRate = 0.07;
+                break;
+            default:
+                echo "Invalid Civil Status";
+                $taxRate = 0;
+                break;
+        }
+
+        // Calculate deduction and net salary
+        $deduction = $gross * $taxRate;
+        $netSalary = $gross - $deduction;
+
+        // Output results
+        echo "Gross Salary: " . number_format($gross, 2) . "<br />";
+        echo "Tax: " . ($taxRate * 100) . "%<br />";
+        echo "Deduction: " . number_format($deduction, 2) . "<br />";
+        echo "Net Salary: " . number_format($netSalary, 2) . "<br />";
     }
-
-    
-    echo "Gross Salary: " . $gross ." <br />";
-    echo "Tax: " . $relation . "<br />";
-    echo "Deduction: 0.00<br />";
-    echo "Net Salary: 0.00<br />";
     ?>
-
-
 </body>
 
 </html>
