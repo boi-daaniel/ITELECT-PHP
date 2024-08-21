@@ -62,7 +62,11 @@
             ?><br><br><?php
 
             //Display Prime Numbers
-
+            print "Prime numbers: ";
+            for ($i = $num1; $i <= $num2; $i--) {
+                if (isPrime($i))
+                    print "$i ";
+            }
         }
         elseif($num1 >= $num2)
         {
@@ -102,7 +106,11 @@
             }
 
             //Display Prime Numbers
-            
+            print "Prime numbers: ";
+            for ($i = $num1; $i >= $num2; $i--) {
+                if (isPrime($i))
+                    print "$i ";
+            }
         }
         
     ?>
