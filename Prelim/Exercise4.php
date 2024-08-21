@@ -25,6 +25,7 @@
         if($num1 <= $num2)
         {
             ?> <br> <?php
+            //Display Odd Numbers
             print "Odd numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
@@ -33,6 +34,7 @@
             } 
             ?><br><br><?php
 
+            //Display Even Numbers
             print "Even numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
@@ -41,6 +43,7 @@
             }
             ?><br><br><?php
 
+            //Display Divisible by 3 Numbers
             print "Divisible by 3 Numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
@@ -49,17 +52,21 @@
             }
             ?><br><br><?php
             
+            //Display Divible by 5 Numbers
             print "Divisible by 5 Numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
                 if($i % 5 == 0)
                     print "$i " ;
             }
-
             ?><br><br><?php
+
+            //Display Prime Numbers
+
         }
         elseif($num1 >= $num2)
         {
+            //Display Odd Numbers
             print "Odd numbers: ";
             for($i = $num1; $i >= $num2; $i--)
             {
@@ -67,7 +74,8 @@
                     print "$i " ;
             } 
             ?><br><br><?php
-
+            
+            //Display Even Numbers
             print "Even numbers: ";
             for($i = $num1; $i >= $num2; $i--)
             {
@@ -76,6 +84,7 @@
             }
             ?><br><br><?php
 
+            //Display Divisible by 3 Numbers
             print "Divisible by 3 Numbers: ";
             for($i = $num1; $i >= $num2; $i--)
             {
@@ -83,13 +92,17 @@
                     print "$i " ;
             }
             ?><br><br><?php
-            
+
+            //Display Divible by 5 Numbers
             print "Divisible by 5 Numbers: ";
             for($i = $num1   ; $i >= $num2; $i--)
             {
                 if($i % 5 == 0)
                     print "$i " ;
             }
+
+            //Display Prime Numbers
+            
         }
         
     ?>
