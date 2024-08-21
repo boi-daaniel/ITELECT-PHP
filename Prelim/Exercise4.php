@@ -7,52 +7,91 @@
 </head>
 <body>
     <form action="" method="get">
-        <input type="text" name="num1" placeholder="num1"><br /><br />
-        <select name="Operator"><br /><br />
-            <option>+</option>
-            <option>-</option>
-            <option>*</option>
-            <option>/</option>
-        </select><br /><br />
-        <input type="text" name="num2" placeholder="num2"><br /><br />
-    <button type="submit">Submit</button>
+       Starting Number: <input type="text" name="num1" placeholder="num1"><br /><br />
+       Ending Number: <input type="text" name="num2" placeholder="num2"><br /><br />
+    <button type="submit">Display</button>
     </form>
     <?php
         $num1 = $_GET['num1'];
         $num2 = $_GET['num2'];
-        $Operator = $_GET["Operator"];
-        $total = 0;
+        ?>
+        <br>
+        <br>
+        <?php print "Starting number: $num1"; ?> <br>
+        <br> 
+        <?php print "Ending number: $num2"; ?> <br> <?php
 
-        switch ($Operator) {
-            case '+':
-                $total = $num1 + $num2;
-                break;
-            case '-':
-                $total = $num1 - $num2;
-                break;
-            case '*':
-                $total = $num1 * $num2;
-                break;
-            case '/':
-                $total = $num1 / $num2;
-                break;
-            default:
-                print "Invalid";
-                break;
+        
+        if($num1 <= $num2)
+        {
+            ?> <br> <?php
+            print "Odd numbers: ";
+            for($i = $num1; $i <= $num2; $i++)
+            {
+                if($i % 2 != 0)
+                    print "$i " ;
+            } 
+            ?><br><br><?php
+
+            print "Even numbers: ";
+            for($i = $num1; $i <= $num2; $i++)
+            {
+                if($i % 2 == 0)
+                    print "$i " ;
+            }
+            ?><br><br><?php
+
+            print "Divisible by 3 Numbers: ";
+            for($i = $num1; $i <= $num2; $i++)
+            {
+                if($i % 3 == 0)
+                    print "$i " ;
+            }
+            ?><br><br><?php
+            
+            print "Divisible by 5 Numbers: ";
+            for($i = $num1; $i <= $num2; $i++)
+            {
+                if($i % 5 == 0)
+                    print "$i " ;
+            }
+
+            ?><br><br><?php
         }
-        
-        print "$total"; ?> <br> <?php
-        
-        for ($i=2; $i <= $total / 2; $i++) { 
-            if($total % $i == 0){
-                print " is not a prime number!";
-                break;
+        elseif($num1 >= $num2)
+        {
+            print "Odd numbers: ";
+            for($i = $num1; $i >= $num2; $i--)
+            {
+                if($i % 2 != 0)
+                    print "$i " ;
+            } 
+            ?><br><br><?php
+
+            print "Even numbers: ";
+            for($i = $num1; $i >= $num2; $i--)
+            {
+                if($i % 2 == 0)
+                    print "$i " ;
+            }
+            ?><br><br><?php
+
+            print "Divisible by 3 Numbers: ";
+            for($i = $num1; $i >= $num2; $i--)
+            {
+                if($i % 3 == 0)
+                    print "$i " ;
+            }
+            ?><br><br><?php
+            
+            print "Divisible by 5 Numbers: ";
+            for($i = $num1   ; $i >= $num2; $i--)
+            {
+                if($i % 5 == 0)
+                    print "$i " ;
             }
         }
-
-        if ($i > $total / 2) {
-            print " is a prime number!";
-        }
+        
     ?>
 </body>
 </html>
