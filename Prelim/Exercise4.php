@@ -6,112 +6,103 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="get">
+<form action="" method="get">
        Starting Number: <input type="text" name="num1" placeholder="num1"><br /><br />
        Ending Number: <input type="text" name="num2" placeholder="num2"><br /><br />
-    <button type="submit">Display</button>
+    <button type="submit">Display</button><br /><br />
     </form>
     <?php
-        $num1 = $_GET['num1'];
-        $num2 = $_GET['num2'];
-        ?>
-        <br>
-        <br>
-        <?php print "Starting number: $num1"; ?> <br>
-        <br> 
-        <?php print "Ending number: $num2"; ?> <br> <?php
+        if (isset($_GET["num1"]) && isset($_GET["num2"])) {
+        $num1 = (int)$_GET["num1"];
+        $num2 = (int)$_GET["num2"];
 
-        
-        if($num1 <= $num2)
-        {
-            ?> <br> <?php
-            //Display Odd Numbers
-            print "Odd numbers: ";
-            for($i = $num1; $i <= $num2; $i++)
-            {
-                if($i % 2 != 0)
-                    print "$i " ;
-            } 
-            ?><br><br><?php
+        echo "Starting Number: $num1 <br /><br />";
+        echo "Ending Number: $num2 <br /><br />";
 
-            //Display Even Numbers
-            print "Even numbers: ";
-            for($i = $num1; $i <= $num2; $i++)
-            {
-                if($i % 2 == 0)
-                    print "$i " ;
+        function isPrime($number) {
+            if ($number < 2) 
+                return false;
+            for ($i = 2; $i <= sqrt($number); $i++) {
+                if ($number % $i == 0) 
+                    return false;
             }
-            ?><br><br><?php
-
-            //Display Divisible by 3 Numbers
-            print "Divisible by 3 Numbers: ";
-            for($i = $num1; $i <= $num2; $i++)
-            {
-                if($i % 3 == 0)
-                    print "$i " ;
-            }
-            ?><br><br><?php
-            
-            //Display Divible by 5 Numbers
-            print "Divisible by 5 Numbers: ";
-            for($i = $num1; $i <= $num2; $i++)
-            {
-                if($i % 5 == 0)
-                    print "$i " ;
-            }
-            ?><br><br><?php
-
-            //Display Prime Numbers
-            print "Prime numbers: ";
-            for ($i = $num1; $i <= $num2; $i--) {
-                if (isPrime($i))
-                    print "$i ";
-            }
+            return true;
         }
-        elseif($num1 >= $num2)
-        {
-            //Display Odd Numbers
-            print "Odd numbers: ";
-            for($i = $num1; $i >= $num2; $i--)
-            {
-                if($i % 2 != 0)
-                    print "$i " ;
-            } 
-            ?><br><br><?php
-            
-            //Display Even Numbers
-            print "Even numbers: ";
-            for($i = $num1; $i >= $num2; $i--)
-            {
-                if($i % 2 == 0)
-                    print "$i " ;
-            }
-            ?><br><br><?php
 
-            //Display Divisible by 3 Numbers
-            print "Divisible by 3 Numbers: ";
-            for($i = $num1; $i >= $num2; $i--)
-            {
-                if($i % 3 == 0)
-                    print "$i " ;
+        // Print Odd Numbers
+        echo "Odd numbers: ";
+        if ($num1 <= $num2) {
+            for ($i = $num1; $i <= $num2; $i++) {
+                if ($i % 2 != 0) 
+                    echo "$i ";
             }
-            ?><br><br><?php
-
-            //Display Divible by 5 Numbers
-            print "Divisible by 5 Numbers: ";
-            for($i = $num1   ; $i >= $num2; $i--)
-            {
-                if($i % 5 == 0)
-                    print "$i " ;
-            }
-
-            //Display Prime Numbers
-            print "Prime numbers: ";
+        } else {
             for ($i = $num1; $i >= $num2; $i--) {
-                if (isPrime($i))
-                    print "$i ";
+                if ($i % 2 != 0) 
+                    echo "$i ";
             }
         }
+        echo "<br /><br />";
+
+        // Print Even Numbers
+        echo "Even numbers: ";
+        if ($num1 <= $num2) {
+            for ($i = $num1; $i <= $num2; $i++) {
+                if ($i % 2 == 0) 
+                    echo "$i ";
+            }
+        } else {
+            for ($i = $num1; $i >= $num2; $i--) {
+                if ($i % 2 == 0) 
+                    echo "$i ";
+            }
+        }
+        echo "<br /><br />";
+
+        // Print Divisible by 3 Numbers
+        echo "Divisible by 3 Numbers: ";
+        if ($num1 <= $num2) {
+            for ($i = $num1; $i <= $num2; $i++) {
+                if ($i % 3 == 0) 
+                    echo "$i ";
+            }
+        } else {
+            for ($i = $num1; $i >= $num2; $i--) {
+                if ($i % 3 == 0) 
+                    echo "$i ";
+            }
+        }
+        echo "<br /><br />";
+
+        // Print Divisible by 5 Numbers
+        echo "Divisible by 5 Numbers: ";
+        if ($num1 <= $num2) {
+            for ($i = $num1; $i <= $num2; $i++) {
+                if ($i % 5 == 0) 
+                    echo "$i ";
+            }
+        } else {
+            for ($i = $num1; $i >= $num2; $i--) {
+                if ($i % 5 == 0) 
+                    echo "$i ";
+            }
+        }
+        echo "<br /><br />";
+
+        // Print Prime Numbers
+        echo "Prime numbers: ";
+        if ($num1 <= $num2) {
+            for ($i = $num1; $i <= $num2; $i++) {
+                if (isPrime($i)) 
+                    echo "$i ";
+            }
+        } else {
+            for ($i = $num1; $i >= $num2; $i--) {
+                if (isPrime($i)) 
+                    echo "$i ";
+            }
+        }
+    }
         
     ?>
 </body>
