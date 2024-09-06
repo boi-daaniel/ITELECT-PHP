@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+    // Initial Inventory stored in a multidimensional array
+    $inventory = [
+        [       
+            "name" => "Laptop", 
+            "category" => "Electronics",
+            "stock" => 12
+        ],
+        [
+            "name" => "Shampoo", 
+            "category" => "Cosmetics", 
+            "stock" => 50
+        ],
+        [
+            "name" => "Notebook", 
+            "category" => "Stationery", 
+            "stock" => 30
+            ]
+    ];
+
+    // Function to display the inventory
+    function displayInventory($inventory) {
+        //echo "Inventory:\n";
+        foreach ($inventory as $product) {
+            echo ucfirst("<br>".$product["name"]) . " (Category: " . ucfirst($product["category"]) . ") - Stock: " . $product["stock"] . "\n";
+        }
+        echo "\n";
+    }
+
+    // Display initial inventory
+    echo "Initial Inventory:";
+    displayInventory($inventory);
+
+    // Adding a new product
+    $newProduct = ["name" => "Pen", "category" => "Stationery", "stock" => 100];
+    array_push($inventory, $newProduct);
+
+    echo "<br><br>Adding new product: " . ucfirst($newProduct["name"]) . " (Category: " . ucfirst($newProduct["category"]) . ") - Stock: " . $newProduct["stock"] . "\n\n";
+
+    // Function to update the stock of an existing product
+    function updateStock(&$inventory, $productName, $newStock) {
+        $found = false;
+        foreach ($inventory as &$product) {
+            if (strtolower($product["name"]) === strtolower($productName)) {
+                $product["stock"] = $newStock;
+                $found = true;
+                break;
+            }
+        }
+        if ($found) {
+            echo "<br>Updating stock for $productName...";
+        } else {
+            echo "<br>Error: Product $productName not found.";
+        }
+    }
+
+    // Updating stock for Laptop
+    updateStock($inventory, "Laptop", 20);
+
+    // Display updated inventory
+    echo "<br><br>Updated Inventory:\n";
+    displayInventory($inventory);
+
+    ?>
+
+</body>
+</html>
